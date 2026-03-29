@@ -6,8 +6,6 @@
 <title>刘泉杉 · AI Projects</title>
 <!-- Anti-FOUC: set lang class before any rendering -->
 <script>(function(){var l=new URLSearchParams(location.search).get('lang')||localStorage.getItem('lang')||'zh';document.documentElement.className='lang-'+l;document.documentElement.lang=l==='en'?'en':'zh-CN';}());</script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
     --bg:     #080c14;
@@ -19,8 +17,8 @@
     --amber:  #f59e0b;
     --text:   #e2e8f0;
     --muted:  #64748b;
-    --mono:   'IBM Plex Mono', monospace;
-    --sans:   'IBM Plex Sans', sans-serif;
+    --mono:   ui-monospace, 'SF Mono', 'Cascadia Code', Menlo, Consolas, 'Courier New', monospace;
+    --sans:   -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', system-ui, sans-serif;
   }
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -343,7 +341,7 @@
       </li>
       <li>
         <span class="zh-content"><strong>峰拟合：</strong>能量空间多峰高斯拟合，输出峰位、半高宽、拟合优度 R²，支持导出 xlsx</span>
-        <span class="en-content"><strong>Peak fitting:</strong> Multi-peak Gaussian fitting in energy space, outputting peak position, FWHM, R², with xlsx export</span>
+        <span class="en-content"><strong>Peak fitting:</strong> Multi-peak Gaussian fitting in energy space, outputting peak position, FWHM, coefficient of determination R², with xlsx export</span>
       </li>
       <li>
         <span class="zh-content"><strong>功率系列分析：</strong>Log-log 提取发光机制斜率 + 速率方程全局优化求解辐射寿命</span>
@@ -359,7 +357,7 @@
       </li>
       <li>
         <span class="zh-content"><strong>AI Copilot：</strong>Python 提取物理描述符 → Groq 生成图注与 Results &amp; Discussion 草稿</span>
-        <span class="en-content"><strong>AI Copilot:</strong> Python extracts physical descriptors → Groq generates figure captions and Results &amp; Discussion drafts</span>
+        <span class="en-content"><strong>AI Copilot:</strong> Python extracts physical descriptors → Groq generates figure captions and results &amp; discussion drafts</span>
       </li>
     </ul>
     <div class="card-stack">
