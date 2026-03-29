@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>刘泉杉 · AI Projects</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:        #080c14;
+    --bg2:       #0e1420;
+    --bg3:       #141c2e;
+    --border:    rgba(59,130,246,0.18);
+    --blue:      #3b82f6;
+    --violet:    #818cf8;
+    --amber:     #f59e0b;
+    --text:      #e2e8f0;
+    --muted:     #64748b;
+    --mono:      'IBM Plex Mono', monospace;
+    --sans:      'IBM Plex Sans', sans-serif;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    font-weight: 400;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(59,130,246,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(59,130,246,0.03) 1px, transparent 1px);
+    background-size: 48px 48px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2.5rem;
+    height: 56px;
+    background: rgba(8,12,20,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-logo { font-family: var(--mono); font-size: 0.85rem; color: var(--blue); letter-spacing: 0.08em; }
+
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a { font-family: var(--mono); font-size: 0.78rem; color: var(--muted); text-decoration: none; letter-spacing: 0.06em; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--text); }
+
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 120px 2.5rem 80px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .hero-tag { font-family: var(--mono); font-size: 0.75rem; color: var(--blue); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.75rem; }
+  .hero-tag::before { content: ''; display: inline-block; width: 24px; height: 1px; background: var(--blue); }
+
+  .hero h1 { font-family: var(--mono); font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 600; line-height: 1.15; letter-spacing: -0.02em; margin-bottom: 1.5rem; }
+  .hero h1 .accent { color: var(--blue); }
+
+  .hero-desc { font-size: 1.05rem; color: #94a3b8; max-width: 580px; margin-bottom: 2.5rem; line-height: 1.8; }
+
+  .hero-links { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+  .btn { display: inline-flex; align-items: center; gap: 0.5rem; font-family: var(--mono); font-size: 0.78rem; letter-spacing: 0.06em; padding: 0.6rem 1.25rem; border-radius: 4px; text-decoration: none; transition: all 0.2s; cursor: pointer; border: none; }
+  .btn-primary { background: var(--blue); color: #fff; }
+  .btn-primary:hover { background: #2563eb; }
+  .btn-ghost { background: transparent; color: var(--muted); border: 1px solid var(--border); }
+  .btn-ghost:hover { border-color: var(--blue); color: var(--text); }
+
+  .spectrum-bar { position: absolute; right: 0; top: 50%; transform: translateY(-50%); width: 280px; height: 320px; opacity: 0.18; pointer-events: none; }
+  @media (max-width: 768px) { .spectrum-bar { display: none; } }
+
+  section { position: relative; z-index: 1; max-width: 900px; margin: 0 auto; padding: 80px 2.5rem; }
+
+  .section-label { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--blue); margin-bottom: 0.6rem; display: flex; align-items: center; gap: 0.75rem; }
+  .section-label::before { content: ''; display: inline-block; width: 18px; height: 1px; background: var(--blue); }
+
+  .section-title { font-family: var(--mono); font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 600; margin-bottom: 3rem; letter-spacing: -0.01em; }
+
+  .project-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 8px; padding: 2rem 2.25rem; margin-bottom: 2rem; transition: border-color 0.25s, transform 0.25s; animation: fadeUp 0.6s ease both; }
+  .project-card:hover { border-color: rgba(59,130,246,0.45); transform: translateY(-2px); }
+
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+  .project-card:nth-child(2) { animation-delay: 0.1s; }
+  .project-card:nth-child(3) { animation-delay: 0.2s; }
+
+  .card-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; margin-bottom: 0.75rem; flex-wrap: wrap; }
+  .card-num { font-family: var(--mono); font-size: 0.7rem; color: var(--blue); letter-spacing: 0.12em; margin-bottom: 0.3rem; }
+  .card-title { font-family: var(--mono); font-size: 1.15rem; font-weight: 600; color: var(--text); letter-spacing: -0.01em; }
+
+  .badge { font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.08em; padding: 0.25rem 0.65rem; border-radius: 3px; white-space: nowrap; flex-shrink: 0; }
+  .badge-live  { background: rgba(34,197,94,0.12); color: #4ade80; border: 1px solid rgba(34,197,94,0.25); }
+  .badge-local { background: rgba(245,158,11,0.12); color: var(--amber); border: 1px solid rgba(245,158,11,0.25); }
+
+  .card-desc { color: #94a3b8; font-size: 0.95rem; margin-bottom: 1.25rem; line-height: 1.75; }
+
+  .feature-list { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 0.45rem 1.5rem; margin-bottom: 1.5rem; }
+  @media (max-width: 600px) { .feature-list { grid-template-columns: 1fr; } }
+  .feature-list li { font-size: 0.875rem; color: #94a3b8; padding-left: 1.1rem; position: relative; }
+  .feature-list li::before { content: '›'; position: absolute; left: 0; color: var(--blue); font-weight: 600; }
+  .feature-list li strong { color: var(--text); font-weight: 500; }
+
+  .card-stack { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1.5rem; }
+  .tag { font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.05em; padding: 0.2rem 0.55rem; border-radius: 3px; background: var(--bg3); color: var(--violet); border: 1px solid rgba(129,140,248,0.2); }
+
+  .card-links { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 1.75rem; }
+
+  /* Video embed */
+  .video-wrap { position: relative; width: 100%; padding-bottom: 56.25%; border-radius: 6px; overflow: hidden; background: #000; margin-top: 0.5rem; }
+  .video-wrap iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: none; }
+  .video-label { font-family: var(--mono); font-size: 0.68rem; color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.5rem; margin-top: 1.5rem; }
+
+  .infra-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 8px; padding: 1.75rem 2.25rem; }
+  .infra-card p { color: #94a3b8; font-size: 0.95rem; margin-bottom: 1.25rem; }
+  .infra-items { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  @media (max-width: 600px) { .infra-items { grid-template-columns: 1fr; } }
+  .infra-item { background: var(--bg3); border: 1px solid var(--border); border-radius: 6px; padding: 1rem 1.25rem; }
+  .infra-item-title { font-family: var(--mono); font-size: 0.8rem; color: var(--blue); margin-bottom: 0.4rem; }
+  .infra-item p { font-size: 0.85rem; margin-bottom: 0; color: #94a3b8; }
+
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+  @media (max-width: 640px) { .about-grid { grid-template-columns: 1fr; } }
+  .about-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 8px; padding: 1.5rem 1.75rem; }
+  .about-card-label { font-family: var(--mono); font-size: 0.7rem; color: var(--muted); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 0.5rem; }
+  .about-card p { font-size: 0.9rem; color: #94a3b8; line-height: 1.7; }
+  .about-card a { color: var(--blue); text-decoration: none; }
+  .about-card a:hover { text-decoration: underline; }
+
+  footer { position: relative; z-index: 1; text-align: center; padding: 2.5rem 2rem; border-top: 1px solid var(--border); font-family: var(--mono); font-size: 0.75rem; color: var(--muted); letter-spacing: 0.06em; }
+
+  hr.section-div { border: none; border-top: 1px solid var(--border); max-width: 900px; margin: 0 auto; }
+</style>
+</head>
+<body>
+
+<nav>
+  <span class="nav-logo">LQS · AI Projects</span>
+  <ul class="nav-links">
+    <li><a href="#projects">项目</a></li>
+    <li><a href="#infra">基础设施</a></li>
+    <li><a href="#about">关于我</a></li>
+    <li><a href="https://github.com/chnlqsray" target="_blank">GitHub ↗</a></li>
+  </ul>
+</nav>
+
+<div class="hero">
+  <div class="hero-tag">AI Applications Portfolio</div>
+  <h1>不写代码，<br><span class="accent">用 AI 交付真实系统</span></h1>
+  <p class="hero-desc">
+    以下项目均由本人主导产品需求、系统逻辑与架构方向，通过与 Claude、Gemini 持续协作完成开发，在不编写代码的情况下独立交付。前两个项目均已上线，可公开访问与演示；第三个项目为本地科研工具，代码托管于 GitHub。
+  </p>
+  <div class="hero-links">
+    <a class="btn btn-primary" href="#projects">查看项目 ↓</a>
+    <a class="btn btn-ghost" href="https://chnlqsray-ai-project.notion.site/AI-3213da042d978062a5cbec6d9b37e13a" target="_blank">Notion Portfolio ↗</a>
+    <a class="btn btn-ghost" href="mailto:uklqsray@163.com">联系我</a>
+  </div>
+
+  <svg class="spectrum-bar" viewBox="0 0 280 320" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="sg" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#818cf8"/>
+        <stop offset="40%" stop-color="#3b82f6"/>
+        <stop offset="70%" stop-color="#06b6d4"/>
+        <stop offset="100%" stop-color="#f59e0b"/>
+      </linearGradient>
+    </defs>
+    <g stroke="url(#sg)" stroke-width="1.5" fill="none" opacity="0.8">
+      <line x1="20"  y1="300" x2="20"  y2="270"/><line x1="35"  y1="300" x2="35"  y2="240"/>
+      <line x1="50"  y1="300" x2="50"  y2="200"/><line x1="65"  y1="300" x2="65"  y2="160"/>
+      <line x1="80"  y1="300" x2="80"  y2="120"/><line x1="95"  y1="300" x2="95"  y2="80"/>
+      <line x1="110" y1="300" x2="110" y2="50"/> <line x1="125" y1="300" x2="125" y2="20"/>
+      <line x1="140" y1="300" x2="140" y2="10"/> <line x1="155" y1="300" x2="155" y2="30"/>
+      <line x1="170" y1="300" x2="170" y2="70"/> <line x1="185" y1="300" x2="185" y2="110"/>
+      <line x1="200" y1="300" x2="200" y2="150"/><line x1="215" y1="300" x2="215" y2="190"/>
+      <line x1="230" y1="300" x2="230" y2="230"/><line x1="245" y1="300" x2="245" y2="260"/>
+      <line x1="260" y1="300" x2="260" y2="280"/>
+    </g>
+    <polyline points="20,270 35,240 50,200 65,160 80,120 95,80 110,50 125,20 140,10 155,30 170,70 185,110 200,150 215,190 230,230 245,260 260,280"
+      stroke="url(#sg)" stroke-width="2" fill="none" opacity="0.6"/>
+  </svg>
+</div>
+
+<hr class="section-div">
+
+<section id="projects">
+  <div class="section-label">Projects</div>
+  <h2 class="section-title">AI 应用项目集</h2>
+
+  <!-- Project 1 -->
+  <div class="project-card">
+    <div class="card-num">PROJECT · 01</div>
+    <div class="card-header">
+      <div class="card-title">美股智能投研仪表盘</div>
+      <span class="badge badge-live">● 已上线</span>
+    </div>
+    <p class="card-desc">一款自动化投资研究平台，实时拉取多维财务指标，通过多智能体 AI 流程生成结构化中文投研报告。</p>
+    <ul class="feature-list">
+      <li><strong>多源数据：</strong>实时获取 12 项财务指标，FMP API 与 yfinance 双源降级兜底</li>
+      <li><strong>多智能体：</strong>CrewAI 三角色协作——量化分析师→市场情报专家→首席投资官</li>
+      <li><strong>RAG 知识库：</strong>投哲书籍检索 + 用户上传 PDF 动态扩充（FAISS 双保险）</li>
+      <li><strong>结构化输出：</strong>自动生成四节式中文投研报告，支持下载为 Markdown</li>
+    </ul>
+    <div class="card-stack">
+      <span class="tag">Streamlit</span><span class="tag">CrewAI</span><span class="tag">Groq API</span>
+      <span class="tag">FAISS</span><span class="tag">FMP API</span><span class="tag">yfinance</span>
+      <span class="tag">GitHub Actions</span>
+    </div>
+    <div class="card-links">
+      <a class="btn btn-primary" href="https://my-finance-ai.streamlit.app/" target="_blank">Streamlit ↗</a>
+      <a class="btn btn-ghost" href="https://huggingface.co/spaces/chnlqsray/finance-dashboard" target="_blank">HuggingFace ↗</a>
+      <a class="btn btn-ghost" href="https://github.com/chnlqsray/finance_app_cloud" target="_blank">GitHub ↗</a>
+      <a class="btn btn-ghost" href="https://www.bilibili.com/video/BV1WScyzDEtX/?spm_id_from=888.80997.embed_other.whitelist&t=4.974137&bvid=BV1WScyzDEtX" target="_blank">Bilibili ↗</a>
+      <a class="btn btn-ghost" href="https://youtu.be/oHZ3-8EK-4U" target="_blank">Youtube ↗</a>
+    </div>
+    
+  </div>
+
+  <!-- Project 2 -->
+  <div class="project-card">
+    <div class="card-num">PROJECT · 02</div>
+    <div class="card-header">
+      <div class="card-title">电影雷达</div>
+      <span class="badge badge-live">● 已上线</span>
+    </div>
+    <p class="card-desc">一款电影信息与深度分析平台，整合 TMDB 电影数据库与 AI 大模型，提供院线新片速递与学术级深度百科生成。</p>
+    <ul class="feature-list">
+      <li><strong>全球新片速递：</strong>自动拉取 TMDB 院线影片，海报墙 + 结构化表格双重呈现</li>
+      <li><strong>华语内容过滤：</strong>代码层精筛院线电影，过滤演唱会、晚会等非电影内容</li>
+      <li><strong>五维深度百科：</strong>创作背景、艺术风格、中英文影评、摄影语言驱动 AI 生成长文</li>
+      <li><strong>导演关联推荐：</strong>每部影片配 AI 生成的个性化推荐语</li>
+    </ul>
+    <div class="card-stack">
+      <span class="tag">Streamlit</span><span class="tag">Groq API</span>
+      <span class="tag">TMDB API</span><span class="tag">DuckDuckGo</span><span class="tag">GitHub Actions</span>
+    </div>
+    <div class="card-links">
+      <a class="btn btn-primary" href="https://my-movie-ai.streamlit.app/" target="_blank">Streamlit ↗</a>
+      <a class="btn btn-ghost" href="https://huggingface.co/spaces/chnlqsray/movie-radar" target="_blank">HuggingFace ↗</a>
+      <a class="btn btn-ghost" href="https://github.com/chnlqsray/movie_app_cloud" target="_blank">GitHub ↗</a>
+      <a class="btn btn-ghost" href="https://www.bilibili.com/video/BV1WScyzDED9/?spm_id_from=888.80997.embed_other.whitelist&t=4.031642&bvid=BV1WScyzDED9" target="_blank">Bilibili ↗</a>
+      <a class="btn btn-ghost" href="https://youtu.be/nY3jBSJbu5g" target="_blank">Youtube ↗</a>
+    </div>
+    
+  </div>
+
+  <!-- Project 3 -->
+  <div class="project-card">
+    <div class="card-num">PROJECT · 03</div>
+    <div class="card-header">
+      <div class="card-title">GaN PL 智能分析平台</div>
+      <span class="badge badge-local">⬡ 本地部署</span>
+    </div>
+    <p class="card-desc">一套面向半导体光谱研究的 AI 增强分析工作台，将博士课题中分散的实验处理脚本整合为统一界面，覆盖从原始文件解析到 AI 辅助论文写作的完整链路。约 6,200 行代码，本人未直接编写一行。</p>
+    <ul class="feature-list">
+      <li><strong>批量处理器：</strong>字节级逆向解析 SPF2 文件，自动校正、坏点修复与归一化</li>
+      <li><strong>峰拟合：</strong>能量空间多峰高斯拟合，输出峰位、半高宽、拟合优度 R²，支持导出 xlsx</li>
+      <li><strong>功率系列分析：</strong>Log-log 提取发光机制斜率 + 速率方程全局优化求解辐射寿命</li>
+      <li><strong>Mapping 热图：</strong>交互式二维发光图 + 离子注入区域自动检测标注</li>
+      <li><strong>寿命对比：</strong>跨样品趋势图，可视化离子注入对载流子动力学的影响</li>
+      <li><strong>AI Copilot：</strong>Python 提取物理描述符 → Groq 生成图注与 Results & Discussion 草稿</li>
+    </ul>
+    <div class="card-stack">
+      <span class="tag">Streamlit</span><span class="tag">NumPy / SciPy</span><span class="tag">Plotly</span>
+      <span class="tag">Groq API</span><span class="tag">differential evolution</span><span class="tag">CIE 1931</span>
+    </div>
+    <div class="card-links">
+      <a class="btn btn-primary" href="https://github.com/chnlqsray/ganpl-analysis" target="_blank">GitHub ↗</a>
+      <a class="btn btn-ghost" href="https://www.bilibili.com/video/BV1ZWXSBeE9P/?spm_id_from=888.80997.embed_other.whitelist&t=11.378546&bvid=BV1ZWXSBeE9P" target="_blank">Bilibili ↗</a>
+      <a class="btn btn-ghost" href="https://youtu.be/JHJoTHOIp70" target="_blank">Youtube ↗</a>
+    </div>
+    
+  </div>
+</section>
+
+<hr class="section-div">
+
+<section id="infra">
+  <div class="section-label">Infrastructure</div>
+  <h2 class="section-title">基础设施 · 自动化运维</h2>
+  <div class="infra-card">
+    <p>支撑以上所有部署应用持续运行的后台系统，以及每日自动推送个人投资数据的定时任务。代码分别托管于 <a href="https://github.com/chnlqsray/finance_app_cloud" target="_blank" style="color:var(--blue);text-decoration:none;">finance_app_cloud</a> 与 <a href="https://github.com/chnlqsray/etf_daily_report" target="_blank" style="color:var(--blue);text-decoration:none;">etf_daily_report</a> 仓库。</p>
+    <div class="infra-items">
+      <div class="infra-item">
+        <div class="infra-item-title">应用保活系统</div>
+        <p>GitHub Actions 每 6 小时触发，Playwright 无头浏览器模拟真实用户访问，自动检测并点击 Streamlit 休眠唤醒按钮，含截图存档，确保两款应用全天候在线。</p>
+      </div>
+      <div class="infra-item">
+        <div class="infra-item-title">ETF 每日日报</div>
+        <p>工作日定时执行，调用腾讯行情 API 拉取 A 股数据（解决 GitHub Actions 海外服务器跨境限制），yfinance 拉取美股数据，计算五期收益率，生成带颜色标注的 HTML 邮件每日推送。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-div">
+
+<section id="about">
+  <div class="section-label">About</div>
+  <h2 class="section-title">关于我</h2>
+  <div class="about-grid">
+    <div class="about-card">
+      <div class="about-card-label">身份</div>
+      <p>英国曼彻斯特大学电子电气工程博士在读（预计 2026 年 9 月毕业），研究方向为光学系统集成与半导体量测表征，课题聚焦于离子注入对 GaN 光致发光性质的影响。</p>
+    </div>
+    <div class="about-card">
+      <div class="about-card-label">方法论</div>
+      <p>以上项目是我将 AI 作为效率杠杆的个人实践——用产品思维和系统设计能力，在不编写代码的情况下构建真实可运行的应用。</p>
+    </div>
+    <div class="about-card">
+      <div class="about-card-label">联系</div>
+      <p><a href="mailto:uklqsray@163.com">uklqsray@163.com</a></p>
+    </div>
+    <div class="about-card">
+      <div class="about-card-label">链接</div>
+      <p>
+        <a href="https://github.com/chnlqsray" target="_blank">GitHub · chnlqsray ↗</a><br>
+        <a href="https://chnlqsray-ai-project.notion.site/AI-3213da042d978062a5cbec6d9b37e13a" target="_blank">Notion Portfolio ↗</a>
+      </p>
+    </div>
+  </div>
+</section>
+
+<footer>© 2026 刘泉杉 · Built with AI collaboration · No code written by hand</footer>
+
+</body>
+</html>
