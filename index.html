@@ -162,22 +162,42 @@
     /* Hide interactive chrome */
     nav, .lang-btn { display: none !important; }
 
-    /* Hero: collapse full-viewport height */
+    /* Hero: minimal height */
     .hero {
       min-height: unset !important;
-      padding: 28px 2.5rem 16px !important;
+      padding: 20px 2.5rem 12px !important;
     }
 
-    /* Sections: minimal vertical rhythm */
-    section { padding: 20px 2.5rem !important; }
+    /* Hero text tighter */
+    .hero h1 { margin-bottom: 0.6rem !important; font-size: clamp(1.6rem, 4vw, 2.8rem) !important; }
+    .hero-desc { margin-bottom: 1rem !important; font-size: 0.95rem !important; }
 
-    /* Dividers: no extra margin */
+    /* Sections: tight */
+    section { padding: 14px 2.5rem !important; }
     hr.section-div { margin: 0 !important; }
 
-    /* Cards: reduce bottom gap */
-    .project-card { margin-bottom: 0.8rem !important; }
+    /* Section headings tight */
+    .section-title { margin-bottom: 0.8rem !important; font-size: clamp(1.1rem, 2.5vw, 1.6rem) !important; }
 
-    /* Keep section label + title with the content below */
+    /* Cards: compact padding and gap */
+    .project-card {
+      padding: 1rem 1.25rem !important;
+      margin-bottom: 0.6rem !important;
+    }
+    .infra-card { padding: 1rem 1.25rem !important; }
+    .about-card { padding: 0.9rem 1.1rem !important; }
+    .infra-item { padding: 0.6rem 0.85rem !important; }
+
+    /* Feature list and stack tighter */
+    .feature-list { gap: 0.2rem 1rem !important; margin-bottom: 0.6rem !important; }
+    .feature-list li { font-size: 0.82rem !important; }
+    .card-desc { margin-bottom: 0.7rem !important; font-size: 0.88rem !important; }
+    .card-stack { margin-bottom: 0.6rem !important; gap: 0.25rem !important; }
+    .tag { font-size: 0.65rem !important; padding: 0.12rem 0.4rem !important; }
+    .card-links { gap: 0.4rem !important; }
+    .btn { padding: 0.3rem 0.7rem !important; font-size: 0.68rem !important; }
+
+    /* Keep section label + title with content below */
     .section-label { break-after: avoid; page-break-after: avoid; }
     .section-title  { break-after: avoid; page-break-after: avoid; }
 
@@ -187,7 +207,6 @@
       page-break-inside: avoid;
     }
 
-    /* Ensure anchors print as clickable (browser Save-as-PDF only) */
     a { text-decoration: underline; }
   }
 </style>
@@ -450,8 +469,8 @@
       </div>
       <div class="infra-item">
         <div class="infra-item-title">
-          <span class="zh-content">PDF 批量导出</span>
-          <span class="en-content">PDF Batch Export</span>
+          <span class="zh-content">作品集 PDF 导出</span>
+          <span class="en-content">Portfolio PDF Export</span>
         </div>
         <p>
           <span class="zh-content">复用同一 Playwright 环境构建脚本化 PDF 导出方案，强制 <code style="font-family:var(--mono);font-size:0.82em;color:var(--violet)">printBackground: true</code> 保留深色主题，规避浏览器虚拟打印机的位图渲染限制，支持中英双语版本一键导出。</span>
@@ -526,7 +545,6 @@
 
   function toggleLang() { applyLang(currentLang === 'zh' ? 'en' : 'zh'); }
 
-  // Sync button label and title on load
   document.getElementById('lang-btn').textContent = currentLang === 'zh' ? 'EN' : '中文';
   if (currentLang === 'en') document.title = 'Quan-Shan Liu · AI Projects';
 </script>
