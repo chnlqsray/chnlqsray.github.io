@@ -132,8 +132,8 @@
   .infra-card > p { color: #94a3b8; font-size: 0.95rem; margin-bottom: 1.25rem; }
   .infra-card a { color: var(--blue); text-decoration: none; }
   .infra-card a:hover { text-decoration: underline; }
-  .infra-items { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-  @media (max-width: 600px) { .infra-items { grid-template-columns: 1fr; } }
+  .infra-items { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; }
+  @media (max-width: 800px) { .infra-items { grid-template-columns: 1fr; } }
   .infra-item { background: var(--bg3); border: 1px solid var(--border); border-radius: 6px; padding: 1rem 1.25rem; }
   .infra-item-title { font-family: var(--mono); font-size: 0.8rem; color: var(--blue); margin-bottom: 0.4rem; }
   .infra-item p { font-size: 0.85rem; color: #94a3b8; }
@@ -149,6 +149,47 @@
 
   footer { position: relative; z-index: 1; text-align: center; padding: 2.5rem 2rem; border-top: 1px solid var(--border); font-family: var(--mono); font-size: 0.75rem; color: var(--muted); letter-spacing: 0.06em; }
   hr.section-div { border: none; border-top: 1px solid var(--border); max-width: 900px; margin: 0 auto; }
+
+  /* ── Print: preserve dark theme, fix page breaks ────────────────────── */
+  @media print {
+    /* Force all backgrounds/colors to print exactly as on screen */
+    * {
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+      color-adjust: exact !important;
+    }
+
+    /* Hide interactive chrome */
+    nav, .lang-btn { display: none !important; }
+
+    /* Hero: collapse full-viewport height */
+    .hero {
+      min-height: unset !important;
+      padding: 28px 2.5rem 16px !important;
+    }
+
+    /* Sections: minimal vertical rhythm */
+    section { padding: 20px 2.5rem !important; }
+
+    /* Dividers: no extra margin */
+    hr.section-div { margin: 0 !important; }
+
+    /* Cards: reduce bottom gap */
+    .project-card { margin-bottom: 0.8rem !important; }
+
+    /* Keep section label + title with the content below */
+    .section-label { break-after: avoid; page-break-after: avoid; }
+    .section-title  { break-after: avoid; page-break-after: avoid; }
+
+    /* Prevent cards from being cut across pages */
+    .project-card, .about-card, .infra-card, .infra-item {
+      break-inside: avoid;
+      page-break-inside: avoid;
+    }
+
+    /* Ensure anchors print as clickable (browser Save-as-PDF only) */
+    a { text-decoration: underline; }
+  }
 </style>
 </head>
 <body>
@@ -341,7 +382,7 @@
       </li>
       <li>
         <span class="zh-content"><strong>峰拟合：</strong>能量空间多峰高斯拟合，输出峰位、半高宽、拟合优度 R²，支持导出 xlsx</span>
-        <span class="en-content"><strong>Peak fitting:</strong> Multi-peak Gaussian fitting in energy space, outputting peak position, FWHM, coefficient of determination R², with xlsx export</span>
+        <span class="en-content"><strong>Peak fitting:</strong> Multi-peak Gaussian fitting in energy space, outputting peak position, FWHM, R², with xlsx export</span>
       </li>
       <li>
         <span class="zh-content"><strong>功率系列分析：</strong>Log-log 提取发光机制斜率 + 速率方程全局优化求解辐射寿命</span>
@@ -357,7 +398,7 @@
       </li>
       <li>
         <span class="zh-content"><strong>AI Copilot：</strong>Python 提取物理描述符 → Groq 生成图注与 Results &amp; Discussion 草稿</span>
-        <span class="en-content"><strong>AI Copilot:</strong> Python extracts physical descriptors → Groq generates figure captions and results &amp; discussion drafts</span>
+        <span class="en-content"><strong>AI Copilot:</strong> Python extracts physical descriptors → Groq generates figure captions and Results &amp; Discussion drafts</span>
       </li>
     </ul>
     <div class="card-stack">
@@ -383,8 +424,8 @@
   </h2>
   <div class="infra-card">
     <p>
-      <span class="zh-content">支撑以上所有部署应用持续运行的后台系统，以及每日自动推送个人投资数据的定时任务。代码分别托管于 <a href="https://github.com/chnlqsray/finance_app_cloud" target="_blank">finance_app_cloud</a> 与 <a href="https://github.com/chnlqsray/etf_daily_report" target="_blank">etf_daily_report</a> 仓库。</span>
-      <span class="en-content">Backend systems keeping all deployed applications running continuously, plus a scheduled task that auto-delivers daily personal investment data. Code hosted in the <a href="https://github.com/chnlqsray/finance_app_cloud" target="_blank">finance_app_cloud</a> and <a href="https://github.com/chnlqsray/etf_daily_report" target="_blank">etf_daily_report</a> repositories.</span>
+      <span class="zh-content">支撑以上所有部署应用持续运行的后台系统，以及每日自动推送个人投资数据的定时任务。代码分别托管于 <a href="https://github.com/chnlqsray/finance_app_cloud" target="_blank">finance_app_cloud</a>、<a href="https://github.com/chnlqsray/etf_daily_report" target="_blank">etf_daily_report</a> 与 <a href="https://github.com/chnlqsray/chnlqsray.github.io" target="_blank">chnlqsray.github.io</a> 仓库。</span>
+      <span class="en-content">Backend systems keeping all deployed applications running continuously, plus a scheduled task that auto-delivers daily personal investment data. Code hosted in the <a href="https://github.com/chnlqsray/finance_app_cloud" target="_blank">finance_app_cloud</a>, <a href="https://github.com/chnlqsray/etf_daily_report" target="_blank">etf_daily_report</a>, and <a href="https://github.com/chnlqsray/chnlqsray.github.io" target="_blank">chnlqsray.github.io</a> repositories.</span>
     </p>
     <div class="infra-items">
       <div class="infra-item">
@@ -405,6 +446,16 @@
         <p>
           <span class="zh-content">工作日定时执行，调用腾讯行情 API 拉取 A 股数据（解决 GitHub Actions 海外服务器跨境限制），yfinance 拉取美股数据，计算五期收益率，生成带颜色标注的 HTML 邮件每日推送。</span>
           <span class="en-content">Runs on a weekday schedule, fetching A-share data via Tencent Market API (bypassing GitHub Actions cross-border restrictions) and US equity data via yfinance, computing five-period returns and delivering a colour-coded HTML email daily.</span>
+        </p>
+      </div>
+      <div class="infra-item">
+        <div class="infra-item-title">
+          <span class="zh-content">PDF 批量导出</span>
+          <span class="en-content">PDF Batch Export</span>
+        </div>
+        <p>
+          <span class="zh-content">复用同一 Playwright 环境构建脚本化 PDF 导出方案，强制 <code style="font-family:var(--mono);font-size:0.82em;color:var(--violet)">printBackground: true</code> 保留深色主题，规避浏览器虚拟打印机的位图渲染限制，支持中英双语版本一键导出。</span>
+          <span class="en-content">Reuses the existing Playwright environment to script PDF export — forcing <code style="font-family:var(--mono);font-size:0.82em;color:var(--violet)">printBackground: true</code> to preserve the dark theme, bypassing the bitmap-rasterisation limitations of virtual print drivers, with one-command bilingual export.</span>
         </p>
       </div>
     </div>
