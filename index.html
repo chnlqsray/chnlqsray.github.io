@@ -235,8 +235,8 @@
   </h1>
 
   <p class="hero-desc">
-    <span class="zh-content">以下项目均由本人主导产品需求、系统逻辑与架构方向，通过与 Codex、Claude、Gemini 持续协作完成开发，在不编写代码的情况下独立交付。前两个项目均已上线，可公开访问与演示；第三个项目为本地科研工具，代码托管于 GitHub。</span>
-    <span class="en-content">Every project below was led by me — defining requirements, system logic, and architecture — and delivered through continuous collaboration with Codex, Claude, and Gemini, without writing a single line of code. The first two are live and publicly accessible; the third is a local research tool with code hosted on GitHub.</span>
+    <span class="zh-content">以下项目均由本人主导产品需求、系统逻辑与架构方向，通过与 Codex、Claude、Gemini 持续协作完成开发，在不编写代码的情况下独立交付。前两个项目均已上线，可公开访问与演示；后两个项目为本地工具，代码托管于 GitHub。</span>
+    <span class="en-content">Every project below was led by me — defining requirements, system logic, and architecture — and delivered through continuous collaboration with Codex, Claude, and Gemini, without writing a single line of code. The first two are live and publicly accessible; the latter two are local tools with code hosted on GitHub.</span>
   </p>
 
   <div class="hero-links">
@@ -428,6 +428,60 @@
       <a class="btn btn-primary" href="https://github.com/chnlqsray/ganpl-analysis" target="_blank">GitHub ↗</a>
       <a class="btn btn-ghost" href="https://www.bilibili.com/video/BV1ZWXSBeE9P/?spm_id_from=888.80997.embed_other.whitelist&t=11.378546&bvid=BV1ZWXSBeE9P" target="_blank">Bilibili ↗</a>
       <a class="btn btn-ghost" href="https://youtu.be/PGWuGbAADsk" target="_blank">YouTube ↗</a>
+    </div>
+  </div>
+
+  <!-- Project 04 -->
+  <div class="project-card">
+    <div class="card-num">PROJECT · 04</div>
+    <div class="card-header">
+      <div class="card-title">
+        <span class="zh-content">PDF 知识库问答助手</span>
+        <span class="en-content">Private Knowledge Base Q&amp;A Assistant</span>
+      </div>
+      <span class="badge badge-local">
+        <span class="zh-content">⬡ 本地部署</span><span class="en-content">⬡ Local Deploy</span>
+      </span>
+    </div>
+    <p class="card-desc">
+      <span class="zh-content">一套本地优先的私有文档问答系统，将 PDF / Markdown 文件向量化后持久化到本地知识库，支持跨会话多轮问答与引用可追溯，彻底解决网页 AI 上下文溢出和语境丢失的问题。</span>
+      <span class="en-content">A local-first private knowledge base Q&amp;A system that vectorises PDF / Markdown files into a persistent local knowledge base, enabling cross-session multi-turn Q&amp;A with traceable citations — fundamentally solving the context-overflow and memory-loss problems of web-based AI tools.</span>
+    </p>
+    <ul class="feature-list">
+      <li>
+        <span class="zh-content"><strong>文档处理：</strong>四级文本提取 fallback（pdfplumber → PyMuPDF → pypdf → RapidOCR），支持 PDF / Markdown，商业水印自动清洗</span>
+        <span class="en-content"><strong>Document ingestion:</strong> Four-level text extraction fallback (pdfplumber → PyMuPDF → pypdf → RapidOCR), PDF / Markdown support, commercial watermark auto-cleaning</span>
+      </li>
+      <li>
+        <span class="zh-content"><strong>RAG 检索增强：</strong>全局 L2 排序 + 关键词对齐评分 + 元数据噪声降权 + 可选 bge-reranker 精排</span>
+        <span class="en-content"><strong>RAG retrieval:</strong> Global L2 ranking + keyword alignment scoring + metadata noise downweighting + optional bge-reranker second-pass reranking</span>
+      </li>
+      <li>
+        <span class="zh-content"><strong>引用可追溯：</strong>每条回答标注来源文件、页码、内容类型（[定义][要求][范围][说明]），证据构成统计可视</span>
+        <span class="en-content"><strong>Traceable citations:</strong> Every answer shows source file, page number, and content type tags ([Definition] [Requirement] [Scope] [Note])</span>
+      </li>
+      <li>
+        <span class="zh-content"><strong>多 Provider LLM：</strong>优先大陆直连（魔塔 GLM-5 / DeepSeek），Groq / OpenRouter 备选；Embedding 四路 fallback</span>
+        <span class="en-content"><strong>Multi-provider LLM:</strong> Mainland-accessible ModelScope (GLM-5 / DeepSeek) as primary, Groq / OpenRouter as fallbacks; four-level embedding fallback</span>
+      </li>
+      <li>
+        <span class="zh-content"><strong>持久化会话：</strong>JSONL 会话文件跨会话保存，历史可切换加载，支持 Markdown 导出</span>
+        <span class="en-content"><strong>Persistent sessions:</strong> JSONL session files saved across restarts, history switchable, Markdown export supported</span>
+      </li>
+      <li>
+        <span class="zh-content"><strong>FAISS 持久化：</strong>索引按 MD5 哈希磁盘存储，安全替换策略，重复内容去重</span>
+        <span class="en-content"><strong>FAISS persistence:</strong> Indexes stored by MD5 hash, safe-replace strategy, duplicate-content deduplication</span>
+      </li>
+    </ul>
+    <div class="card-stack">
+      <span class="tag">Streamlit</span><span class="tag">FAISS</span><span class="tag">BAAI/bge-m3</span>
+      <span class="tag">pdfplumber</span><span class="tag">RapidOCR</span>
+      <span class="tag">ModelScope</span><span class="tag">OpenAI-compatible API</span>
+    </div>
+    <div class="card-links">
+      <a class="btn btn-primary" href="https://github.com/chnlqsray/local_rag" target="_blank">GitHub ↗</a>
+      <a class="btn btn-ghost" href="https://www.bilibili.com/video/BV18eoSBYEDH/" target="_blank">Bilibili ↗</a>
+      <a class="btn btn-ghost" href="https://youtu.be/XN7PRk3rHyU" target="_blank">YouTube ↗</a>
     </div>
   </div>
 </section>
