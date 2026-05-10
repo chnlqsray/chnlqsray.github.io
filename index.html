@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>刘泉杉 · AI Projects</title>
+<title>刘泉杉 · Portfolio</title>
 <!-- Anti-FOUC: set lang class before any rendering -->
 <script>(function(){var l=new URLSearchParams(location.search).get('lang')||localStorage.getItem('lang')||'zh';document.documentElement.className='lang-'+l;document.documentElement.lang=l==='en'?'en':'zh-CN';}());</script>
 <style>
@@ -148,6 +148,12 @@
   .about-card a:hover { text-decoration: underline; }
 
   footer { position: relative; z-index: 1; text-align: center; padding: 2.5rem 2rem; border-top: 1px solid var(--border); font-family: var(--mono); font-size: 0.75rem; color: var(--muted); letter-spacing: 0.06em; }
+  /* ── Research cards ───────────────────────────────────────────────────── */
+  .badge-paper { background: rgba(129,140,248,0.12); color: var(--violet); border: 1px solid rgba(129,140,248,0.25); }
+  .badge-prep  { background: rgba(245,158,11,0.12);  color: var(--amber);  border: 1px solid rgba(245,158,11,0.25); }
+  .card-meta   { font-family: var(--mono); font-size: 0.72rem; color: var(--muted); margin-top: 0.25rem; letter-spacing: 0.04em; }
+  .pub-link    { display: inline-flex; align-items: center; gap: 0.4rem; font-family: var(--mono); font-size: 0.78rem; letter-spacing: 0.05em; color: var(--violet); text-decoration: none; padding: 0.5rem 1.1rem; border: 1px solid rgba(129,140,248,0.3); border-radius: 4px; transition: all 0.2s; }
+  .pub-link:hover { border-color: var(--violet); background: rgba(129,140,248,0.08); }
   hr.section-div { border: none; border-top: 1px solid var(--border); max-width: 900px; margin: 0 auto; }
 
   /* ── Print: preserve dark theme, fix page breaks ────────────────────── */
@@ -215,9 +221,10 @@
 
 <!-- Nav -->
 <nav>
-  <span class="nav-logo">LQS · AI Projects</span>
+  <span class="nav-logo">LQS · Portfolio</span>
   <ul class="nav-links">
-    <li><a href="#projects"><span class="zh-content">项目</span><span class="en-content">Projects</span></a></li>
+    <li><a href="#research"><span class="zh-content">博士研究</span><span class="en-content">PhD Research</span></a></li>
+    <li><a href="#projects"><span class="zh-content">AI 项目</span><span class="en-content">AI Applications</span></a></li>
     <li><a href="#infra"><span class="zh-content">基础设施</span><span class="en-content">Infrastructure</span></a></li>
     <li><a href="#about"><span class="zh-content">关于我</span><span class="en-content">About</span></a></li>
     <li><a href="https://github.com/chnlqsray" target="_blank">GitHub ↗</a></li>
@@ -227,7 +234,7 @@
 
 <!-- Hero -->
 <div class="hero">
-  <div class="hero-tag">AI Applications Portfolio</div>
+  <div class="hero-tag"><span class="zh-content">作品集</span><span class="en-content">Portfolio</span></div>
 
   <h1>
     <span class="zh-content">不写代码，<br><span class="accent">用 AI 交付真实系统</span></span>
@@ -235,16 +242,16 @@
   </h1>
 
   <p class="hero-desc">
-    <span class="zh-content">以下项目均由本人主导产品需求、系统逻辑与架构方向，通过与 Codex、Claude、Gemini 持续协作完成开发，在不编写代码的情况下独立交付。前两个项目均已上线，可公开访问与演示；后两个项目为本地工具，代码托管于 GitHub。</span>
-    <span class="en-content">Every project below was led by me — defining requirements, system logic, and architecture — and delivered through continuous collaboration with Codex, Claude, and Gemini, without writing a single line of code. The first two are live and publicly accessible; the latter two are local tools with code hosted on GitHub.</span>
+    <span class="zh-content">曼彻斯特大学电子电气工程博士，专长为光学系统集成与半导体量测。本站收录博士研究成果与 AI 系统交付实践——以领域专家视角判断 AI 输出合理性，通过与 Codex、Claude、Gemini 协作，在不编写代码的情况下独立交付生产级系统。</span>
+    <span class="en-content">PhD researcher at the University of Manchester specialising in optical system integration and semiconductor metrology. This portfolio covers both research work and production AI systems — combining domain expertise to validate outputs with human–AI collaboration (Codex, Claude, Gemini) to deliver real systems without writing code directly.</span>
   </p>
 
   <div class="hero-links">
-    <a class="btn btn-primary" href="#projects">
-      <span class="zh-content">查看项目 ↓</span><span class="en-content">View Projects ↓</span>
+    <a class="btn btn-primary" href="#research">
+      <span class="zh-content">查看研究 ↓</span><span class="en-content">View Research ↓</span>
     </a>
-    <a class="btn btn-ghost" href="mailto:uklqsray@163.com">
-      <span class="zh-content">联系我</span><span class="en-content">Contact</span>
+    <a class="btn btn-ghost" href="#projects">
+      <span class="zh-content">查看项目 ↓</span><span class="en-content">View Projects ↓</span>
     </a>
   </div>
 
@@ -275,169 +282,156 @@
 
 <hr class="section-div">
 
+
+<!-- Research -->
+<section id="research">
+  <div class="section-label"><span class="zh-content">博士研究</span><span class="en-content">PhD Research</span></div>
+  <h2 class="section-title">
+    <span class="zh-content">光学研究 · 半导体量测</span>
+    <span class="en-content">Optical Research · Semiconductor Metrology</span>
+  </h2>
+
+  <!-- Research 01: GaN PL -->
+  <div class="project-card">
+    <div class="card-num"><span class="zh-content">研究 · 01</span><span class="en-content">RESEARCH · 01</span></div>
+    <div class="card-header">
+      <div>
+        <div class="card-title">
+          <span class="zh-content">半导体薄膜全自动计量与 AI 分析平台（GaN PL 项目）</span>
+          <span class="en-content">Automated Semiconductor Metrology &amp; AI Analysis Platform (GaN PL)</span>
+        </div>
+        <div class="card-meta">
+          <span class="zh-content">2024/09 — 至今 &nbsp;·&nbsp; 核心研发 &nbsp;·&nbsp; 曼彻斯特大学</span>
+          <span class="en-content">Sep 2024 – Present &nbsp;·&nbsp; Core R&amp;D &nbsp;·&nbsp; The University of Manchester</span>
+        </div>
+      </div>
+      <span class="badge badge-prep">
+        <span class="zh-content">⬡ 论文撰写中</span>
+        <span class="en-content">⬡ Manuscript in Preparation</span>
+      </span>
+    </div>
+    <p class="card-desc">
+      <span class="zh-content">围绕博士课题，从零构建集光路设计、硬件控制、视觉反馈与光谱采集于一体的全自动 GaN 光致发光计量平台，覆盖从物理机理到系统交付的完整链路。</span>
+      <span class="en-content">Built a fully automated GaN photoluminescence metrology platform from scratch for my PhD research, covering the full chain from optical-path design and hardware control to radiometric calibration and AI-enhanced analysis.</span>
+    </p>
+    <ul class="feature-list">
+      <li>
+        <span class="zh-content"><strong>系统架构：</strong>从零构建 GaN 光致发光计量平台，集光路设计、硬件控制（相机/压电台/光谱仪）、视觉反馈与光谱采集于一体；主导反射镜、带通滤光片、分束镜等核心器件选型与链路优化；利用 Python SDK 实现仪器深度集成</span>
+        <span class="en-content"><strong>System architecture:</strong> Built end-to-end automated GaN PL metrology platform combining optical-path design, hardware control (camera, piezo stages, spectrometer), vision feedback and spectral acquisition; led component selection (mirrors, bandpass filters, beam splitters) and optical-path optimisation; instruments integrated via Python-based SDK control</span>
+      </li>
+      <li>
+        <span class="zh-content"><strong>视觉驱动对焦：</strong>基于计算机视觉设计自动对焦算法，采用 Otsu 分割 + 爬山搜索，以光斑面积比例为目标函数，实现亚微米级焦平面追踪</span>
+        <span class="en-content"><strong>Vision-based autofocus:</strong> Designed computer-vision workflow using Otsu segmentation + hill-climbing search with beam spot-area ratio as objective function, achieving sub-micron focal-plane tracking</span>
+      </li>
+      <li>
+        <span class="zh-content"><strong>辐射定标：</strong>建立白光源定标流程与系统光谱非线性补偿模型；通过 SPF2 字节级逆向解析读取曝光时间，集成坏点修复与批处理链路，确保跨波段量值溯源性</span>
+        <span class="en-content"><strong>Radiometric calibration:</strong> White-light-source calibration and non-linear spectral response compensation; dead-pixel correction via SPF2 byte-level exposure-time extraction; batch processing for cross-band physical traceability</span>
+      </li>
+      <li>
+        <span class="zh-content"><strong>AI 增强分析层：</strong>通过 AI 协作交付约 6200 行 Python 的 Streamlit 平台——多峰拟合、功率依赖寿命分析、速率方程建模（differential evolution）、CIE 色坐标、二维 Mapping 热图与 AI Copilot 写作辅助；同时构建本地 RAG 文献问答助手，支持将科研文献向量化后持久化检索，辅助文献调研与写作</span>
+        <span class="en-content"><strong>AI-enhanced analysis layer:</strong> Streamlit platform (~6,200 Python lines) via AI collaboration — multi-peak fitting, power-dependent lifetime analysis, rate-equation modelling (differential evolution), CIE chromaticity, 2D mapping and AI Copilot writing assistance; additionally built a local RAG literature Q&amp;A assistant enabling persistent vector retrieval of research papers to support literature review and writing</span>
+      </li>
+    </ul>
+    <div class="card-stack">
+      <span class="tag">GaN · Photoluminescence</span>
+      <span class="tag">Optical System Design</span>
+      <span class="tag">Computer Vision</span>
+      <span class="tag">Radiometric Calibration</span>
+      <span class="tag">Differential Evolution</span>
+      <span class="tag">Python / SDK</span>
+      <span class="tag">Streamlit</span>
+      <span class="tag">RAG</span>
+    </div>
+    <div class="card-links">
+      <a class="btn btn-ghost" href="#card-gan-pl">
+        <span class="zh-content">↓ GaN PL 智能分析平台</span>
+        <span class="en-content">↓ GaN PL AI Analysis Platform</span>
+      </a>
+      <a class="btn btn-ghost" href="#card-rag">
+        <span class="zh-content">↓ PDF 知识库问答助手</span>
+        <span class="en-content">↓ PDF Knowledge Base Assistant</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- Research 02: Microring Resonator -->
+  <div class="project-card">
+    <div class="card-num"><span class="zh-content">研究 · 02</span><span class="en-content">RESEARCH · 02</span></div>
+    <div class="card-header">
+      <div>
+        <div class="card-title">
+          <span class="zh-content">光学器件表征与系统不确定度分析（微环谐振器项目）</span>
+          <span class="en-content">Optical Module Characterisation &amp; System Uncertainty Analysis (Microring Resonator)</span>
+        </div>
+        <div class="card-meta">
+          <span class="zh-content">2022/09 — 2024/07 &nbsp;·&nbsp; 核心研发 &nbsp;·&nbsp; 曼彻斯特大学</span>
+          <span class="en-content">Sep 2022 – Jul 2024 &nbsp;·&nbsp; Core R&amp;D &nbsp;·&nbsp; The University of Manchester</span>
+        </div>
+      </div>
+      <span class="badge badge-paper">
+        <span class="zh-content">● 已发表</span>
+        <span class="en-content">● Published</span>
+      </span>
+    </div>
+    <p class="card-desc">
+      <span class="zh-content">微环谐振器光纤耦合表征：建立六自由度对准协议与测量系统分析框架，通过 COMSOL 数字孪生验证加工公差对光栅耦合器耦合效率的影响；非标夹具设计将硬件成本降低 90% 以上。</span>
+      <span class="en-content">Microring resonator fibre-to-waveguide characterisation: established a six-degree-of-freedom alignment protocol and measurement system analysis framework; root cause analysis of fabrication-tolerance effects on grating coupler's coupling efficiency via COMSOL digital-twin modelling.</span>
+    </p>
+    <ul class="feature-list">
+      <li>
+        <span class="zh-content"><strong>精密对准协议：</strong>基于 Thorlabs 1550 nm SLD 宽谱光源与压电控制系统，针对光纤–波导耦合建立高效稳定对准流程，实现亚微米级链路调节</span>
+        <span class="en-content"><strong>Precision alignment:</strong> 6-DoF fibre-to-waveguide alignment using Thorlabs 1550 nm SLD broadband source + piezo controllers, enabling sub-micron link adjustment</span>
+      </li>
+      <li>
+        <span class="zh-content"><strong>测量系统分析（MSA）：</strong>针对环境振动与热漂移设计重复性与稳定性测试，对质量因子 Q、消光比等关键指标进行多样本统计分析，验证统计显著性</span>
+        <span class="en-content"><strong>Measurement system analysis (MSA):</strong> Repeatability and stability studies quantifying Q-factor and extinction ratio variation under environmental vibration and thermal drift; statistical validity ensured</span>
+      </li>
+      <li>
+        <span class="zh-content"><strong>仿真一致性验证与根因分析（RCA）：</strong>利用 COMSOL 建立数字孪生模型，对比实验与仿真数据，对光栅耦合器耦合效率进行加工公差根因分析</span>
+        <span class="en-content"><strong>Simulation &amp; root cause analysis (RCA):</strong> COMSOL digital-twin models; RCA of fabrication-tolerance effects on grating coupler's coupling efficiency, correlating simulation with experimental results</span>
+      </li>
+      <li>
+        <span class="zh-content"><strong>快速原型设计：</strong>利用 Fusion 360 与 3D 打印技术设计非标光纤夹具，在保证数百微米级定位精度的前提下将硬件成本降低 90% 以上</span>
+        <span class="en-content"><strong>Rapid prototyping:</strong> Non-standard fibre holders via Fusion 360 + 3D printing; hundreds-of-microns positioning accuracy; hardware cost reduced by &gt;90%</span>
+      </li>
+    </ul>
+    <div class="card-stack">
+      <span class="tag">Microring Resonator</span>
+      <span class="tag">Fibre-Waveguide Coupling</span>
+      <span class="tag">MSA / RCA</span>
+      <span class="tag">COMSOL Multiphysics</span>
+      <span class="tag">Photonics</span>
+      <span class="tag">Fusion 360 / 3D Printing</span>
+    </div>
+    <div class="card-links">
+      <a class="pub-link" href="https://www.nature.com/articles/s41598-026-46478-x" target="_blank">📄 Scientific Reports ↗</a>
+    </div>
+  </div>
+</section>
+
+<hr class="section-div">
+
 <!-- Projects -->
 <section id="projects">
-  <div class="section-label">Projects</div>
+  <div class="section-label"><span class="zh-content">AI 项目</span><span class="en-content">AI Applications</span></div>
   <h2 class="section-title">
     <span class="zh-content">AI 应用项目集</span>
     <span class="en-content">AI Application Portfolio</span>
   </h2>
 
   <!-- Project 01 -->
-  <div class="project-card">
-    <div class="card-num">PROJECT · 01</div>
+  <div class="project-card" id="card-rag">
+    <div class="card-num"><span class="zh-content">项目 · 01</span><span class="en-content">PROJECT · 01</span></div>
     <div class="card-header">
-      <div class="card-title">
-        <span class="zh-content">美股智能投研仪表盘</span>
-        <span class="en-content">US Equity Research Dashboard</span>
-      </div>
-      <span class="badge badge-live">
-        <span class="zh-content">● 已上线</span><span class="en-content">● Live</span>
-      </span>
-    </div>
-    <p class="card-desc">
-      <span class="zh-content">一款自动化投资研究平台，实时拉取多维财务指标，通过多智能体 AI 流程生成结构化中文投研报告。</span>
-      <span class="en-content">An automated equity research platform that fetches multi-dimensional financial metrics in real time and generates structured Chinese investment reports through a multi-agent AI workflow.</span>
-    </p>
-    <ul class="feature-list">
-      <li>
-        <span class="zh-content"><strong>多源数据：</strong>实时获取 12 项财务指标，FMP API 与 yfinance 双源降级兜底</span>
-        <span class="en-content"><strong>Multi-source data:</strong> 12 financial metrics in real time; FMP API with automatic yfinance fallback</span>
-      </li>
-      <li>
-        <span class="zh-content"><strong>多智能体：</strong>CrewAI 三角色协作——量化分析师→市场情报专家→首席投资官</span>
-        <span class="en-content"><strong>Multi-agent:</strong> CrewAI three-role pipeline — Quantitative Analyst → Market Intelligence → Chief Investment Officer</span>
-      </li>
-      <li>
-        <span class="zh-content"><strong>RAG 知识库：</strong>投哲书籍检索 + 用户上传 PDF 动态扩充（FAISS 双保险）</span>
-        <span class="en-content"><strong>RAG knowledge base:</strong> Investment philosophy retrieval + user-uploaded PDF expansion (FAISS dual-fallback)</span>
-      </li>
-      <li>
-        <span class="zh-content"><strong>结构化输出：</strong>自动生成四节式中文投研报告，支持下载为 Markdown</span>
-        <span class="en-content"><strong>Structured output:</strong> Auto-generated four-section investment report, downloadable as Markdown</span>
-      </li>
-    </ul>
-    <div class="card-stack">
-      <span class="tag">Streamlit</span><span class="tag">CrewAI</span><span class="tag">Groq API</span>
-      <span class="tag">FAISS</span><span class="tag">FMP API</span><span class="tag">yfinance</span>
-      <span class="tag">GitHub Actions</span>
-    </div>
-    <div class="card-links">
-      <a class="btn btn-primary" href="https://my-finance-ai.streamlit.app/" target="_blank">Streamlit ↗</a>
-      <a class="btn btn-ghost" href="https://huggingface.co/spaces/chnlqsray/finance-dashboard" target="_blank">HuggingFace ↗</a>
-      <a class="btn btn-ghost" href="https://github.com/chnlqsray/finance_app_cloud" target="_blank">GitHub ↗</a>
-      <a class="btn btn-ghost" href="https://www.bilibili.com/video/BV1WScyzDEtX/?spm_id_from=888.80997.embed_other.whitelist&t=4.974137&bvid=BV1WScyzDEtX" target="_blank">Bilibili ↗</a>
-      <a class="btn btn-ghost" href="https://youtu.be/5YCtdb15YWs" target="_blank">YouTube ↗</a>
-    </div>
-  </div>
-
-  <!-- Project 02 -->
-  <div class="project-card">
-    <div class="card-num">PROJECT · 02</div>
-    <div class="card-header">
-      <div class="card-title">
-        <span class="zh-content">电影雷达</span>
-        <span class="en-content">Movie Radar</span>
-      </div>
-      <span class="badge badge-live">
-        <span class="zh-content">● 已上线</span><span class="en-content">● Live</span>
-      </span>
-    </div>
-    <p class="card-desc">
-      <span class="zh-content">一款电影信息与深度分析平台，整合 TMDB 电影数据库与 AI 大模型，提供院线新片速递与学术级深度百科生成。</span>
-      <span class="en-content">A movie information and deep-analysis platform integrating the TMDB database with AI large language models, offering real-time new-release tracking and AI-generated long-form film profiles.</span>
-    </p>
-    <ul class="feature-list">
-      <li>
-        <span class="zh-content"><strong>全球新片速递：</strong>自动拉取 TMDB 院线影片，海报墙 + 结构化表格双重呈现</span>
-        <span class="en-content"><strong>Global new-release tracker:</strong> Auto-fetches TMDB cinema films, displayed as poster wall + structured table</span>
-      </li>
-      <li>
-        <span class="zh-content"><strong>华语内容过滤：</strong>代码层精筛院线电影，过滤演唱会、晚会等非电影内容</span>
-        <span class="en-content"><strong>Chinese-language filter:</strong> Code-level filtering of concerts, variety shows and other non-film content</span>
-      </li>
-      <li>
-        <span class="zh-content"><strong>五维深度百科：</strong>创作背景、艺术风格、中英文影评、摄影语言驱动 AI 生成长文</span>
-        <span class="en-content"><strong>Five-axis deep profiles:</strong> AI-generated long-form articles driven by production background, artistic style, bilingual reviews, and cinematography</span>
-      </li>
-      <li>
-        <span class="zh-content"><strong>导演关联推荐：</strong>每部影片配 AI 生成的个性化推荐语</span>
-        <span class="en-content"><strong>Director-linked recommendations:</strong> Personalised AI-generated recommendation note per film</span>
-      </li>
-    </ul>
-    <div class="card-stack">
-      <span class="tag">Streamlit</span><span class="tag">Groq API</span>
-      <span class="tag">TMDB API</span><span class="tag">DuckDuckGo</span><span class="tag">GitHub Actions</span>
-    </div>
-    <div class="card-links">
-      <a class="btn btn-primary" href="https://my-movie-ai.streamlit.app/" target="_blank">Streamlit ↗</a>
-      <a class="btn btn-ghost" href="https://huggingface.co/spaces/chnlqsray/movie-radar" target="_blank">HuggingFace ↗</a>
-      <a class="btn btn-ghost" href="https://github.com/chnlqsray/movie_app_cloud" target="_blank">GitHub ↗</a>
-      <a class="btn btn-ghost" href="https://www.bilibili.com/video/BV1WScyzDED9/?spm_id_from=888.80997.embed_other.whitelist&t=4.031642&bvid=BV1WScyzDED9" target="_blank">Bilibili ↗</a>
-      <a class="btn btn-ghost" href="https://youtu.be/OkK7aCUJT_Y" target="_blank">YouTube ↗</a>
-    </div>
-  </div>
-
-  <!-- Project 03 -->
-  <div class="project-card">
-    <div class="card-num">PROJECT · 03</div>
-    <div class="card-header">
-      <div class="card-title">
-        <span class="zh-content">GaN PL 智能分析平台</span>
-        <span class="en-content">GaN PL Intelligent Analysis Platform</span>
-      </div>
-      <span class="badge badge-local">
-        <span class="zh-content">⬡ 本地部署</span><span class="en-content">⬡ Local Deploy</span>
-      </span>
-    </div>
-    <p class="card-desc">
-      <span class="zh-content">一套面向半导体光谱研究的 AI 增强分析工作台，将博士课题中分散的实验处理脚本整合为统一界面，覆盖从原始文件解析到 AI 辅助论文写作的完整链路。约 6,200 行代码，本人未直接编写一行。</span>
-      <span class="en-content">An AI-augmented spectral analysis workspace for semiconductor photoluminescence research, consolidating previously fragmented experimental scripts into a unified interface covering the full chain from raw file parsing to AI-assisted scientific writing. ~6,200 lines of code, not a single line written directly by me.</span>
-    </p>
-    <ul class="feature-list">
-      <li>
-        <span class="zh-content"><strong>批量处理器：</strong>字节级逆向解析 SPF2 文件，自动校正、坏点修复与归一化</span>
-        <span class="en-content"><strong>Batch processor:</strong> Byte-level reverse-engineered SPF2 parsing, auto correction, dead-pixel repair and normalisation</span>
-      </li>
-      <li>
-        <span class="zh-content"><strong>峰拟合：</strong>能量空间多峰高斯拟合，输出峰位、半高宽、拟合优度 R²，支持导出 xlsx</span>
-        <span class="en-content"><strong>Peak fitting:</strong> Multi-peak Gaussian fitting in energy space, outputting peak position, FWHM, R², with xlsx export</span>
-      </li>
-      <li>
-        <span class="zh-content"><strong>功率系列分析：</strong>Log-log 提取发光机制斜率 + 速率方程全局优化求解辐射寿命</span>
-        <span class="en-content"><strong>Power series analysis:</strong> Log-log slope extraction for emission mechanism identification + global rate-equation optimisation for radiative lifetime</span>
-      </li>
-      <li>
-        <span class="zh-content"><strong>Mapping 热图：</strong>交互式二维发光图 + 离子注入区域自动检测标注</span>
-        <span class="en-content"><strong>Mapping heatmap:</strong> Interactive 2D photoluminescence map + automatic ion-implanted region detection</span>
-      </li>
-      <li>
-        <span class="zh-content"><strong>寿命对比：</strong>跨样品趋势图，可视化离子注入对载流子动力学的影响</span>
-        <span class="en-content"><strong>Lifetime comparison:</strong> Cross-sample trend plots visualising the effect of ion implantation on carrier dynamics</span>
-      </li>
-      <li>
-        <span class="zh-content"><strong>AI Copilot：</strong>Python 提取物理描述符 → Groq 生成图注与 Results &amp; Discussion 草稿</span>
-        <span class="en-content"><strong>AI Copilot:</strong> Python extracts physical descriptors → Groq generates figure captions and Results &amp; Discussion drafts</span>
-      </li>
-    </ul>
-    <div class="card-stack">
-      <span class="tag">Streamlit</span><span class="tag">NumPy / SciPy</span><span class="tag">Plotly</span>
-      <span class="tag">Groq API</span><span class="tag">differential evolution</span><span class="tag">CIE 1931</span>
-    </div>
-    <div class="card-links">
-      <a class="btn btn-primary" href="https://github.com/chnlqsray/ganpl-analysis" target="_blank">GitHub ↗</a>
-      <a class="btn btn-ghost" href="https://www.bilibili.com/video/BV1ZWXSBeE9P/?spm_id_from=888.80997.embed_other.whitelist&t=11.378546&bvid=BV1ZWXSBeE9P" target="_blank">Bilibili ↗</a>
-      <a class="btn btn-ghost" href="https://youtu.be/PGWuGbAADsk" target="_blank">YouTube ↗</a>
-    </div>
-  </div>
-
-  <!-- Project 04 -->
-  <div class="project-card">
-    <div class="card-num">PROJECT · 04</div>
-    <div class="card-header">
-      <div class="card-title">
+      <div>
+        <div class="card-title">
         <span class="zh-content">PDF 知识库问答助手</span>
         <span class="en-content">Private Knowledge Base Q&amp;A Assistant</span>
+      </div>
+        <div class="card-meta">
+          <span class="zh-content">4周交付 · 2026/04</span>
+          <span class="en-content">4-week delivery &nbsp;·&nbsp; Apr 2026</span>
+        </div>
       </div>
       <span class="badge badge-local">
         <span class="zh-content">⬡ 本地部署</span><span class="en-content">⬡ Local Deploy</span>
@@ -484,13 +478,179 @@
       <a class="btn btn-ghost" href="https://youtu.be/XN7PRk3rHyU" target="_blank">YouTube ↗</a>
     </div>
   </div>
+
+<!-- Project 02 -->
+  <div class="project-card" id="card-gan-pl">
+    <div class="card-num"><span class="zh-content">项目 · 02</span><span class="en-content">PROJECT · 02</span></div>
+    <div class="card-header">
+      <div>
+        <div class="card-title">
+        <span class="zh-content">GaN PL 智能分析平台</span>
+        <span class="en-content">GaN PL Intelligent Analysis Platform</span>
+      </div>
+        <div class="card-meta">
+          <span class="zh-content">2周交付 · 2026/03</span>
+          <span class="en-content">2-week delivery &nbsp;·&nbsp; Mar 2026</span>
+        </div>
+      </div>
+      <span class="badge badge-local">
+        <span class="zh-content">⬡ 本地部署</span><span class="en-content">⬡ Local Deploy</span>
+      </span>
+    </div>
+    <p class="card-desc">
+      <span class="zh-content">一套面向半导体光谱研究的 AI 增强分析工作台，将博士课题中分散的实验处理脚本整合为统一界面，覆盖从原始文件解析到 AI 辅助论文写作的完整链路。约 6,200 行代码，本人未直接编写一行。</span>
+      <span class="en-content">An AI-augmented spectral analysis workspace for semiconductor photoluminescence research, consolidating previously fragmented experimental scripts into a unified interface covering the full chain from raw file parsing to AI-assisted scientific writing. ~6,200 lines of code, not a single line written directly by me.</span>
+    </p>
+    <ul class="feature-list">
+      <li>
+        <span class="zh-content"><strong>批量处理器：</strong>字节级逆向解析 SPF2 文件，自动校正、坏点修复与归一化</span>
+        <span class="en-content"><strong>Batch processor:</strong> Byte-level reverse-engineered SPF2 parsing, auto correction, dead-pixel repair and normalisation</span>
+      </li>
+      <li>
+        <span class="zh-content"><strong>峰拟合：</strong>能量空间多峰高斯拟合，输出峰位、半高宽、拟合优度 R²，支持导出 xlsx</span>
+        <span class="en-content"><strong>Peak fitting:</strong> Multi-peak Gaussian fitting in energy space, outputting peak position, FWHM, R², with xlsx export</span>
+      </li>
+      <li>
+        <span class="zh-content"><strong>功率系列分析：</strong>Log-log 提取发光机制斜率 + 速率方程全局优化求解辐射寿命</span>
+        <span class="en-content"><strong>Power series analysis:</strong> Log-log slope extraction for emission mechanism identification + global rate-equation optimisation for radiative lifetime</span>
+      </li>
+      <li>
+        <span class="zh-content"><strong>Mapping 热图：</strong>交互式二维发光图 + 离子注入区域自动检测标注</span>
+        <span class="en-content"><strong>Mapping heatmap:</strong> Interactive 2D photoluminescence map + automatic ion-implanted region detection</span>
+      </li>
+      <li>
+        <span class="zh-content"><strong>寿命对比：</strong>跨样品趋势图，可视化离子注入对载流子动力学的影响</span>
+        <span class="en-content"><strong>Lifetime comparison:</strong> Cross-sample trend plots visualising the effect of ion implantation on carrier dynamics</span>
+      </li>
+      <li>
+        <span class="zh-content"><strong>AI Copilot：</strong>Python 提取物理描述符 → Groq 生成图注与 Results &amp; Discussion 草稿</span>
+        <span class="en-content"><strong>AI Copilot:</strong> Python extracts physical descriptors → Groq generates figure captions and Results &amp; Discussion drafts</span>
+      </li>
+    </ul>
+    <div class="card-stack">
+      <span class="tag">Streamlit</span><span class="tag">NumPy / SciPy</span><span class="tag">Plotly</span>
+      <span class="tag">Groq API</span><span class="tag">differential evolution</span><span class="tag">CIE 1931</span>
+    </div>
+    <div class="card-links">
+      <a class="btn btn-primary" href="https://github.com/chnlqsray/ganpl-analysis" target="_blank">GitHub ↗</a>
+      <a class="btn btn-ghost" href="https://www.bilibili.com/video/BV1ZWXSBeE9P/?spm_id_from=888.80997.embed_other.whitelist&t=11.378546&bvid=BV1ZWXSBeE9P" target="_blank">Bilibili ↗</a>
+      <a class="btn btn-ghost" href="https://youtu.be/PGWuGbAADsk" target="_blank">YouTube ↗</a>
+    </div>
+  </div>
+
+<!-- Project 03 -->
+  <div class="project-card">
+    <div class="card-num"><span class="zh-content">项目 · 03</span><span class="en-content">PROJECT · 03</span></div>
+    <div class="card-header">
+      <div>
+        <div class="card-title">
+        <span class="zh-content">电影雷达</span>
+        <span class="en-content">Movie Radar</span>
+      </div>
+        <div class="card-meta">
+          <span class="zh-content">3周交付 · 2026/02–03</span>
+          <span class="en-content">3-week delivery &nbsp;·&nbsp; Feb–Mar 2026</span>
+        </div>
+      </div>
+      <span class="badge badge-live">
+        <span class="zh-content">● 已上线</span><span class="en-content">● Live</span>
+      </span>
+    </div>
+    <p class="card-desc">
+      <span class="zh-content">一款电影信息与深度分析平台，整合 TMDB 电影数据库与 AI 大模型，提供院线新片速递与学术级深度百科生成。</span>
+      <span class="en-content">A movie information and deep-analysis platform integrating the TMDB database with AI large language models, offering real-time new-release tracking and AI-generated long-form film profiles.</span>
+    </p>
+    <ul class="feature-list">
+      <li>
+        <span class="zh-content"><strong>全球新片速递：</strong>自动拉取 TMDB 院线影片，海报墙 + 结构化表格双重呈现</span>
+        <span class="en-content"><strong>Global new-release tracker:</strong> Auto-fetches TMDB cinema films, displayed as poster wall + structured table</span>
+      </li>
+      <li>
+        <span class="zh-content"><strong>华语内容过滤：</strong>代码层精筛院线电影，过滤演唱会、晚会等非电影内容</span>
+        <span class="en-content"><strong>Chinese-language filter:</strong> Code-level filtering of concerts, variety shows and other non-film content</span>
+      </li>
+      <li>
+        <span class="zh-content"><strong>五维深度百科：</strong>创作背景、艺术风格、中英文影评、摄影语言驱动 AI 生成长文</span>
+        <span class="en-content"><strong>Five-axis deep profiles:</strong> AI-generated long-form articles driven by production background, artistic style, bilingual reviews, and cinematography</span>
+      </li>
+      <li>
+        <span class="zh-content"><strong>导演关联推荐：</strong>每部影片配 AI 生成的个性化推荐语</span>
+        <span class="en-content"><strong>Director-linked recommendations:</strong> Personalised AI-generated recommendation note per film</span>
+      </li>
+    </ul>
+    <div class="card-stack">
+      <span class="tag">Streamlit</span><span class="tag">Groq API</span>
+      <span class="tag">TMDB API</span><span class="tag">DuckDuckGo</span><span class="tag">GitHub Actions</span>
+    </div>
+    <div class="card-links">
+      <a class="btn btn-primary" href="https://my-movie-ai.streamlit.app/" target="_blank">Streamlit ↗</a>
+      <a class="btn btn-ghost" href="https://huggingface.co/spaces/chnlqsray/movie-radar" target="_blank">HuggingFace ↗</a>
+      <a class="btn btn-ghost" href="https://github.com/chnlqsray/movie_app_cloud" target="_blank">GitHub ↗</a>
+      <a class="btn btn-ghost" href="https://www.bilibili.com/video/BV1WScyzDED9/?spm_id_from=888.80997.embed_other.whitelist&t=4.031642&bvid=BV1WScyzDED9" target="_blank">Bilibili ↗</a>
+      <a class="btn btn-ghost" href="https://youtu.be/OkK7aCUJT_Y" target="_blank">YouTube ↗</a>
+    </div>
+  </div>
+
+<!-- Project 04 -->
+  <div class="project-card">
+    <div class="card-num"><span class="zh-content">项目 · 04</span><span class="en-content">PROJECT · 04</span></div>
+    <div class="card-header">
+      <div>
+        <div class="card-title">
+        <span class="zh-content">美股智能投研仪表盘</span>
+        <span class="en-content">US Equity Research Dashboard</span>
+      </div>
+        <div class="card-meta">
+          <span class="zh-content">3周交付 · 2026/02–03</span>
+          <span class="en-content">3-week delivery &nbsp;·&nbsp; Feb–Mar 2026</span>
+        </div>
+      </div>
+      <span class="badge badge-live">
+        <span class="zh-content">● 已上线</span><span class="en-content">● Live</span>
+      </span>
+    </div>
+    <p class="card-desc">
+      <span class="zh-content">一款自动化投资研究平台，实时拉取多维财务指标，通过多智能体 AI 流程生成结构化中文投研报告。</span>
+      <span class="en-content">An automated equity research platform that fetches multi-dimensional financial metrics in real time and generates structured Chinese investment reports through a multi-agent AI workflow.</span>
+    </p>
+    <ul class="feature-list">
+      <li>
+        <span class="zh-content"><strong>多源数据：</strong>实时获取 12 项财务指标，FMP API 与 yfinance 双源降级兜底</span>
+        <span class="en-content"><strong>Multi-source data:</strong> 12 financial metrics in real time; FMP API with automatic yfinance fallback</span>
+      </li>
+      <li>
+        <span class="zh-content"><strong>多智能体：</strong>CrewAI 三角色协作——量化分析师→市场情报专家→首席投资官</span>
+        <span class="en-content"><strong>Multi-agent:</strong> CrewAI three-role pipeline — Quantitative Analyst → Market Intelligence → Chief Investment Officer</span>
+      </li>
+      <li>
+        <span class="zh-content"><strong>RAG 知识库：</strong>投哲书籍检索 + 用户上传 PDF 动态扩充（FAISS 双保险）</span>
+        <span class="en-content"><strong>RAG knowledge base:</strong> Investment philosophy retrieval + user-uploaded PDF expansion (FAISS dual-fallback)</span>
+      </li>
+      <li>
+        <span class="zh-content"><strong>结构化输出：</strong>自动生成四节式中文投研报告，支持下载为 Markdown</span>
+        <span class="en-content"><strong>Structured output:</strong> Auto-generated four-section investment report, downloadable as Markdown</span>
+      </li>
+    </ul>
+    <div class="card-stack">
+      <span class="tag">Streamlit</span><span class="tag">CrewAI</span><span class="tag">Groq API</span>
+      <span class="tag">FAISS</span><span class="tag">FMP API</span><span class="tag">yfinance</span>
+      <span class="tag">GitHub Actions</span>
+    </div>
+    <div class="card-links">
+      <a class="btn btn-primary" href="https://my-finance-ai.streamlit.app/" target="_blank">Streamlit ↗</a>
+      <a class="btn btn-ghost" href="https://huggingface.co/spaces/chnlqsray/finance-dashboard" target="_blank">HuggingFace ↗</a>
+      <a class="btn btn-ghost" href="https://github.com/chnlqsray/finance_app_cloud" target="_blank">GitHub ↗</a>
+      <a class="btn btn-ghost" href="https://www.bilibili.com/video/BV1WScyzDEtX/?spm_id_from=888.80997.embed_other.whitelist&t=4.974137&bvid=BV1WScyzDEtX" target="_blank">Bilibili ↗</a>
+      <a class="btn btn-ghost" href="https://youtu.be/5YCtdb15YWs" target="_blank">YouTube ↗</a>
+    </div>
+  </div>
+
 </section>
 
 <hr class="section-div">
-
 <!-- Infrastructure -->
 <section id="infra">
-  <div class="section-label">Infrastructure</div>
+  <div class="section-label"><span class="zh-content">基础设施</span><span class="en-content">Infrastructure</span></div>
   <h2 class="section-title">
     <span class="zh-content">基础设施 · 自动化运维</span>
     <span class="en-content">Infrastructure · Automated Operations</span>
@@ -539,7 +699,7 @@
 
 <!-- About -->
 <section id="about">
-  <div class="section-label">About</div>
+  <div class="section-label"><span class="zh-content">关于我</span><span class="en-content">About</span></div>
   <h2 class="section-title">
     <span class="zh-content">关于我</span>
     <span class="en-content">About Me</span>
@@ -550,8 +710,8 @@
         <span class="zh-content">身份</span><span class="en-content">Identity</span>
       </div>
       <p>
-        <span class="zh-content">英国曼彻斯特大学电子电气工程博士在读（预计 2026 年 9 月毕业），研究方向为光学系统集成与半导体量测表征，课题聚焦于离子注入对 GaN 光致发光性质的影响。</span>
-        <span class="en-content">PhD candidate in Electrical &amp; Electronic Engineering at the University of Manchester (expected September 2026), specialising in optical system integration and semiconductor metrology, with research focused on the effects of ion implantation on GaN photoluminescence.</span>
+        <span class="zh-content">曼彻斯特大学电子电气工程博士（预计 2026 年 9 月毕业），专长为光学系统集成与半导体量测，课题聚焦于离子注入对 GaN 光致发光性质的影响。</span>
+        <span class="en-content">University of Manchester PhD (expected Sep 2026), specialising in optical system integration and semiconductor metrology, with research focused on the effects of ion implantation on GaN photoluminescence.</span>
       </p>
     </div>
     <div class="about-card">
@@ -559,8 +719,12 @@
         <span class="zh-content">方法论</span><span class="en-content">Methodology</span>
       </div>
       <p>
-        <span class="zh-content">以上项目是我将 AI 作为效率杠杆的个人实践——用产品思维和系统设计能力，在不编写代码的情况下构建真实可运行的应用。</span>
-        <span class="en-content">These projects represent my personal practice of using AI as a force multiplier — applying product thinking and systems design to build real, running applications without writing any code.</span>
+        <span class="zh-content">本网站涵盖两个维度的工作：博士课题中的光学量测研究，以及以 AI 为工具的系统交付实践。核心方法是将领域专业判断与 AI 协作相结合——在不编写代码的情况下构建真实可运行的系统。</span>
+        <span class="en-content">This portfolio spans two dimensions: PhD-level optical metrology research and production AI systems delivered through human–AI collaboration — combining domain expertise to validate outputs with product thinking to ship real, deployable systems without writing code.</span>
+      </p>
+      <p style="margin-top:0.9rem; opacity:0.82;">
+        <span class="zh-content">工作风格上，我追求深度而非广度——倾向于将一个问题研究透彻，而非同时推进多条线。在技术沟通与客户支持场景中，体察能力较强，能感知对方真正的困惑所在，而不只是字面问题。分析风格偏好数据与证据驱动，不接受模糊的结论。驱动力来自工作本身的意义，而非任务数量。</span>
+        <span class="en-content">My working style tends toward depth over breadth — I'd rather understand one problem fully than skim across many. In technical and client-facing contexts, I have a strong instinct for sensing where the real confusion lies, not just the surface question. Analytically I'm evidence-driven and don't settle for vague conclusions. My motivation comes from the meaning of the work itself, not task volume.</span>
       </p>
     </div>
     <div class="about-card">
@@ -574,8 +738,7 @@
         <span class="zh-content">链接</span><span class="en-content">Links</span>
       </div>
       <p>
-        <a href="https://github.com/chnlqsray" target="_blank">GitHub · chnlqsray ↗</a><br>
-        <a href="https://chnlqsray-ai-project.notion.site/AI-3213da042d978062a5cbec6d9b37e13a" target="_blank">Notion Portfolio ↗</a>
+        <a href="https://github.com/chnlqsray" target="_blank">GitHub · chnlqsray ↗</a>
       </p>
     </div>
   </div>
@@ -591,7 +754,7 @@
     document.documentElement.className = 'lang-' + lang;
     document.documentElement.lang = lang === 'en' ? 'en' : 'zh-CN';
     document.getElementById('lang-btn').textContent = lang === 'zh' ? 'EN' : '中文';
-    document.title = lang === 'zh' ? '刘泉杉 · AI Projects' : 'Quan-Shan Liu · AI Projects';
+    document.title = lang === 'zh' ? '刘泉杉 · Portfolio' : 'Quan-Shan Liu · Portfolio';
     localStorage.setItem('lang', lang);
     history.replaceState(null, '', lang === 'en' ? '?lang=en' : location.pathname);
     currentLang = lang;
@@ -600,7 +763,7 @@
   function toggleLang() { applyLang(currentLang === 'zh' ? 'en' : 'zh'); }
 
   document.getElementById('lang-btn').textContent = currentLang === 'zh' ? 'EN' : '中文';
-  if (currentLang === 'en') document.title = 'Quan-Shan Liu · AI Projects';
+  if (currentLang === 'en') document.title = 'Quan-Shan Liu · Portfolio';
 </script>
 
 </body>
